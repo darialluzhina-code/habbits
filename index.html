@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Бесплатный дневник привычек в браузере: план на неделю, отметки, отчёты и резервные копии. Данные остаются на вашем устройстве.">
+  <title>Мои привычки — дневник маленьких шагов</title>
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+  <nav class="site-nav" aria-label="Главная навигация">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">🌿</span> Мои привычки</a>
+    <div class="nav-links">
+      <a class="btn ghost" href="#how">Как это работает</a>
+      <a class="btn" href="app.html">Открыть дневник</a>
+    </div>
+  </nav>
+
+  <header class="hero-wrap">
+    <div>
+      <span class="eyebrow">Локальный трекер без регистрации</span>
+      <h1>Маленькие шаги — большие изменения</h1>
+      <p class="lead">Планируйте привычки на неделю, отмечайте факты и смотрите прогресс. Всё хранится только в этом браузере: без аккаунта и без облака.</p>
+      <div class="cta-row">
+        <a class="btn" href="app.html">Начать вести дневник</a>
+        <a class="btn secondary" href="app.html#plan">Посмотреть план недели</a>
+      </div>
+    </div>
+    <aside class="hero-card" aria-hidden="true">
+      <div class="preview-head">
+        <span>Привычка</span><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span>
+      </div>
+      <div class="preview-row">
+        <strong>Пилатес</strong>
+        <span class="dot on"></span><span class="dot"></span><span class="dot on"></span><span class="dot"></span>
+      </div>
+      <div class="preview-row">
+        <strong>Чтение</strong>
+        <span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot on"></span>
+      </div>
+      <div class="preview-row">
+        <strong>Прогулка</strong>
+        <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span>
+      </div>
+      <div class="metrics">
+        <div class="metric"><span class="muted">Факт</span><strong>8</strong></div>
+        <div class="metric"><span class="muted">План</span><strong>7</strong></div>
+        <div class="metric"><span class="muted">Неделя</span><strong>114%</strong></div>
+      </div>
+    </aside>
+  </header>
+
+  <section class="section" id="how">
+    <div class="steps">
+      <article class="card">
+        <div class="step-num">1</div>
+        <h2>Добавьте привычку</h2>
+        <p>Назовите занятие и отметьте дни, когда планируете его делать. План можно менять в любой момент.</p>
+      </article>
+      <article class="card">
+        <div class="step-num">2</div>
+        <h2>Отмечайте факты</h2>
+        <p>Галочка ставится в реальный день. Если бассейн был в пятницу вместо четверга — отмечайте пятницу. Дополнительные занятия тоже считаются.</p>
+      </article>
+      <article class="card">
+        <div class="step-num">3</div>
+        <h2>Смотрите отчёты</h2>
+        <p>Неделя и месяц показывают факт, план и процент. Можно листать прошлые периоды и скачать резервную копию.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cards">
+      <article class="card">
+        <h2>Только ваше устройство</h2>
+        <p>Данные не уходят на сервер. Для переноса на другой компьютер достаточно файла резервной копии.</p>
+      </article>
+      <article class="card">
+        <h2>Сверх плана — это плюс</h2>
+        <p>Процент может быть выше 100%. Незапланированный день отмечается пунктирной клеткой и учитывается в отчёте.</p>
+      </article>
+      <article class="card">
+        <h2>Светлая и тёмная тема</h2>
+        <p>Тема запоминается отдельно от привычек. Переключатель всегда в правом нижнем углу.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="bottom-cta">
+    <div class="panel">
+      <h2>Готовы к первой неделе?</h2>
+      <p>Откройте дневник, добавьте одну привычку и отметьте сегодняшний день.</p>
+      <a class="btn" href="app.html">Перейти к дневнику</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>🔒 Данные хранятся локально. Проект открытый: смотрите README.md в репозитории.</p>
+  </footer>
+
+  <button type="button" id="themeToggle" class="theme-toggle" aria-label="Включить тёмную тему" title="Переключить тему">☾</button>
+  <script src="js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Дневник привычек: недельный план, отметки, отчёты и резервные копии.">
+  <title>Дневник — Мои привычки</title>
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <nav class="site-nav" aria-label="Главная навигация">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">🌿</span> Мои привычки</a>
+    <div class="nav-links">
+      <a class="btn ghost" href="index.html">На главную</a>
+      <button class="btn secondary" id="help" aria-haspopup="dialog">❔ Инструкция</button>
+      <button class="btn" id="add">+ Добавить привычку</button>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <p id="storage-warning" role="alert" hidden></p>
+    <header class="app-header">
+      <div>
+        <h1>🌿 Мои привычки</h1>
+        <p>Маленькие шаги — большие изменения</p>
+      </div>
+      <div class="toolbar">
+        <button class="btn secondary" id="demo" type="button">Заполнить примерами</button>
+      </div>
+    </header>
+
+    <section class="stats" aria-label="Итоги недели">
+      <div class="stat"><span class="muted">Выполнено за неделю</span><strong id="done">0</strong></div>
+      <div class="stat"><span class="muted">Выполнение плана</span><strong id="rate">0%</strong></div>
+      <div class="stat"><span class="muted">Запланировано</span><strong id="planned">0</strong></div>
+    </section>
+
+    <section class="panel" id="plan">
+      <div class="between">
+        <h2>План на неделю</h2>
+        <div class="toolbar">
+          <button class="btn secondary" id="prev" aria-label="Предыдущая неделя">←</button>
+          <strong id="range"></strong>
+          <button class="btn secondary" id="next" aria-label="Следующая неделя">→</button>
+          <button class="btn secondary" id="current">Сегодня</button>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Привычка</th>
+              <th id="d0"></th>
+              <th id="d1"></th>
+              <th id="d2"></th>
+              <th id="d3"></th>
+              <th id="d4"></th>
+              <th id="d5"></th>
+              <th id="d6"></th>
+              <th>Настройки</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <p class="muted">Отмечайте выполненные занятия галочкой. Галочку можно поставить в любой прошедший день, даже если занятие не было запланировано. Дополнительные занятия учитываются сверх плана.</p>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Недельный отчёт</h2>
+        <div class="between"><span>Прогресс недели</span><strong id="weekpercent">0%</strong></div>
+        <div class="bar" style="margin:13px 0 20px"><div id="weekprogress"></div></div>
+        <p class="muted" id="elapsed">На сегодняшний день: —</p>
+        <div id="breakdown"></div>
+      </section>
+      <section class="panel">
+        <div class="between">
+          <h2>Месячный отчёт</h2>
+          <div class="toolbar">
+            <button class="btn secondary" id="monthprev">←</button>
+            <strong id="monthlabel"></strong>
+            <button class="btn secondary" id="monthnext">→</button>
+          </div>
+        </div>
+        <div class="between">
+          <span class="muted">Выполнение плана за месяц</span>
+          <strong id="monthpercent"></strong>
+        </div>
+        <p id="monthdetail" class="muted"></p>
+        <h2 style="margin-top:20px">Динамика по неделям</h2>
+        <div id="chart" class="weekbars"></div>
+        <p class="muted">Недели разбиты по календарным дням месяца. Процент — факт / план, может быть выше 100%. Высота столбца ограничена 100% для наглядности.</p>
+      </section>
+    </div>
+
+    <p class="muted">🔒 Данные хранятся только в этом браузере на этом устройстве. Для сохранности можно сделать резервную копию.</p>
+    <div class="toolbar">
+      <button class="btn secondary" id="export">Скачать резервную копию</button>
+      <button class="btn secondary" id="import">Восстановить из файла</button>
+      <input id="file" type="file" accept="application/json,.json" hidden>
+    </div>
+  </main>
+
+  <div class="modal" id="helpModal" hidden>
+    <section class="dialog help-dialog" role="dialog" aria-modal="true" aria-labelledby="helpTitle" tabindex="-1">
+      <div class="between">
+        <h2 id="helpTitle">Как пользоваться дневником</h2>
+        <button class="iconbtn" id="helpClose" type="button" aria-label="Закрыть инструкцию">✕</button>
+      </div>
+      <ol>
+        <li><b>Добавьте привычку</b> и выберите дни, когда планируете заниматься.</li>
+        <li><b>Отмечайте галочками фактические дни.</b> Если бассейн был в пятницу вместо четверга, отметьте пятницу. План по четвергам сохранится.</li>
+        <li><b>Дополнительные занятия тоже считаются.</b> План — 1 раз, факт — 2 раза: выполнение 200%, сверх плана +1.</li>
+        <li><b>Отчёты</b> показывают план, факт, процент и перевыполнение. Стрелки позволяют посмотреть другие недели и месяцы.</li>
+        <li><b>Данные сохраняются</b> в этом браузере. Регулярно скачивайте резервную копию; для переноса на другое устройство используйте восстановление из файла.</li>
+        <li><b>Тема</b> переключается круглой кнопкой справа внизу.</li>
+      </ol>
+      <p class="muted">Нельзя отмечать будущие даты. Если план равен нулю, процент не рассчитывается, но фактические занятия учитываются.</p>
+      <button class="btn" id="helpOk" type="button">Понятно</button>
+    </section>
+  </div>
+
+  <div class="modal" id="modal" hidden>
+    <form class="dialog" id="form" role="dialog" aria-modal="true" aria-labelledby="modaltitle">
+      <h2 id="modaltitle">Новая привычка</h2>
+      <label for="name">Название привычки</label>
+      <input id="name" type="text" maxlength="60" required placeholder="Например, пилатес">
+      <label>В какие дни планируете?</label>
+      <div class="days" id="daychecks"></div>
+      <div class="dialogfooter">
+        <button type="button" class="btn secondary" id="cancel">Отмена</button>
+        <button type="submit" class="btn">Сохранить</button>
+      </div>
+    </form>
+  </div>
+
+  <button type="button" id="themeToggle" class="theme-toggle" aria-label="Включить тёмную тему" title="Переключить тему">☾</button>
+  <script src="js/theme.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

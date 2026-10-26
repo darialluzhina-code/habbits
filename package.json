@@ -1,0 +1,10 @@
+{
+  "name": "moi-privychki",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Локальный дневник привычек: план на неделю, отметки, отчёты и резервные копии в браузере.",
+  "license": "MIT",
+  "scripts": {
+    "start": "python3 -m http.server 4173"
+  }
+}
